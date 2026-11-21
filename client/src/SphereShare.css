@@ -1,0 +1,923 @@
+/* ============================================================
+   SphereShare Collaborative Shopping Styles
+   Uses ShopSphere's existing Plum & Rose CSS Design Tokens
+   ============================================================ */
+
+/* Navbar SphereShare Button */
+.sphereshare-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: var(--white);
+  color: var(--plum);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.sphereshare-nav-button:hover {
+  background: var(--rose-light);
+  border-color: var(--rose);
+}
+
+.sphereshare-nav-button.active-room {
+  background: linear-gradient(135deg, var(--plum), #6A4462);
+  color: var(--white);
+  border-color: var(--plum);
+  box-shadow: 0 4px 14px rgba(75, 48, 69, 0.2);
+}
+
+.sphereshare-nav-button.active-room:hover {
+  background: var(--plum-dark);
+}
+
+.sphereshare-nav-badge {
+  background: var(--rose);
+  color: var(--plum-dark);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Active Room Sticky Status Banner */
+.sphereshare-active-banner {
+  background: linear-gradient(90deg, #F9EEF2, #FFF5F5);
+  border-bottom: 1px solid var(--border);
+  padding: 11px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 13px;
+  color: var(--text);
+  animation: sphereshareSlideDown 0.25s ease-out;
+}
+
+@keyframes sphereshareSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sphereshare-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sphereshare-banner-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgba(39, 134, 83, 0.2);
+  display: inline-block;
+  animation: spheresharePulse 2s infinite;
+}
+
+@keyframes spheresharePulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.sphereshare-banner-content code {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--plum);
+  letter-spacing: 0.5px;
+}
+
+.sphereshare-host-tag {
+  background: var(--rose-light);
+  color: var(--plum-dark);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.sphereshare-checkedout-tag {
+  background: #E8F5EE;
+  color: var(--success);
+  border: 1px solid #C4E8D1;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.sphereshare-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sphereshare-banner-btn {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--plum);
+  padding: 6px 13px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.sphereshare-banner-btn:hover {
+  background: var(--rose-light);
+  border-color: var(--rose);
+}
+
+.sphereshare-leave-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #C03950;
+  padding: 6px 11px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sphereshare-leave-btn:hover {
+  background: #FDE8ED;
+  border-color: #F8CAD4;
+}
+
+/* Modal Overlay & Card */
+.sphereshare-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 23, 36, 0.58);
+  backdrop-filter: blur(3px);
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: sphereshareFade 0.2s ease;
+}
+
+@keyframes sphereshareFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sphereshare-modal {
+  background: var(--white);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 470px;
+  padding: 30px;
+  box-shadow: 0 18px 45px rgba(40, 23, 36, 0.25);
+  color: var(--text);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: sphereshareZoom 0.22s ease-out;
+}
+
+@keyframes sphereshareZoom {
+  from {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.sphereshare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.sphereshare-title-group h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 23px;
+  color: var(--plum);
+  margin-bottom: 4px;
+}
+
+.sphereshare-title-group p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Active Room Card inside Modal */
+.sphereshare-active-card {
+  background: var(--blush);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.sphereshare-active-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sphereshare-active-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sphereshare-active-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  display: inline-block;
+}
+
+.sphereshare-active-card h3 {
+  font-size: 17px;
+  color: var(--plum);
+  margin: 0 0 10px;
+}
+
+.sphereshare-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--plum);
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.sphereshare-copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.sphereshare-copy-btn:hover {
+  color: #B77D94;
+}
+
+.sphereshare-active-meta {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 6px;
+}
+
+/* Modal Tabs */
+.sphereshare-tabs {
+  display: flex;
+  background: var(--blush);
+  padding: 4px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  gap: 4px;
+}
+
+.sphereshare-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sphereshare-tab:hover {
+  color: var(--plum);
+}
+
+.sphereshare-tab.active {
+  background: var(--white);
+  color: var(--plum);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(75, 48, 69, 0.08);
+}
+
+/* Forms */
+.sphereshare-form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sphereshare-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sphereshare-form-group label {
+  color: var(--plum);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.sphereshare-form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--blush);
+  color: var(--text);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sphereshare-form-group input:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(214, 165, 181, 0.2);
+  background: var(--white);
+}
+
+.sphereshare-form-group input.code-input {
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sphereshare-form-hint {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.sphereshare-error-banner {
+  background: #FDF2F4;
+  border: 1px solid #F8CAD4;
+  color: #C03950;
+  border-radius: 11px;
+  padding: 10px 14px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.sphereshare-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--plum);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.sphereshare-submit-btn:hover:not(:disabled) {
+  background: var(--plum-dark);
+  transform: translateY(-1px);
+}
+
+.sphereshare-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sphereshare-switch-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+.sphereshare-switch-link {
+  color: var(--plum);
+  font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+  text-decoration: underline;
+}
+
+.sphereshare-switch-link:hover {
+  color: #B77D94;
+}
+
+/* Spinner */
+.sphereshare-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: sphereshareSpin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes sphereshareSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   STEP 2: SHARED CART & COLLABORATIVE UI EXTENSIONS
+   ============================================================ */
+
+/* Product Card Actions with SphereShare */
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.sphereshare-add-btn {
+  border: 1px solid var(--plum);
+  background: var(--white);
+  color: var(--plum);
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.sphereshare-add-btn:hover:not(:disabled) {
+  background: var(--rose-light);
+  border-color: var(--rose);
+  transform: translateY(-1px);
+}
+
+.sphereshare-add-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Shared Cart Trigger Button in Active Room Banner */
+.sphereshare-cart-trigger-btn {
+  background: var(--plum);
+  border: 1px solid var(--plum);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(75, 48, 69, 0.15);
+}
+
+.sphereshare-cart-trigger-btn:hover {
+  background: var(--plum-dark);
+}
+
+.sphereshare-badge-count {
+  background: var(--rose);
+  color: var(--plum-dark);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+/* Drawer Header Subhead */
+.sphereshare-drawer-subhead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.sphereshare-drawer-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--blush);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.sphereshare-drawer-code-pill code {
+  color: var(--plum);
+  font-weight: 700;
+}
+
+.sphereshare-copy-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+}
+
+.sphereshare-live-sync {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.spin-slow {
+  animation: sphereshareSpin 2s linear infinite;
+  color: var(--success);
+}
+
+/* Members Strip */
+.sphereshare-members-strip {
+  background: var(--blush);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.sphereshare-members-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.sphereshare-members-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.sphereshare-member-chip {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--plum);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sphereshare-member-chip.is-you {
+  background: #F4E8EE;
+  border-color: var(--rose);
+  font-weight: 700;
+}
+
+.sphereshare-member-chip.is-host {
+  color: #8C4362;
+}
+
+/* Items List in Drawer */
+.sphereshare-item-card {
+  align-items: flex-start;
+  padding: 14px 0;
+}
+
+.sphereshare-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sphereshare-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sphereshare-item-top h3 {
+  font-size: 14px;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--plum);
+}
+
+.sphereshare-item-trash {
+  padding: 4px;
+  color: #C03950;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sphereshare-item-trash:hover {
+  background: #FDF2F4;
+}
+
+.sphereshare-item-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sphereshare-qty-badge {
+  background: var(--blush);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.sphereshare-added-by {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Voting Row */
+.sphereshare-voting-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.sphereshare-vote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--blush);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 9px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sphereshare-vote-btn:hover {
+  background: var(--rose-light);
+  border-color: var(--rose);
+}
+
+.sphereshare-vote-btn.upvote.voted {
+  background: #E8F5EE;
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.sphereshare-vote-btn.downvote.voted {
+  background: #FDF2F4;
+  border-color: #C03950;
+  color: #C03950;
+}
+
+.sphereshare-score-pill {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-weight: 700;
+  background: var(--blush);
+  color: var(--muted);
+}
+
+.sphereshare-score-pill.positive {
+  background: #E8F5EE;
+  color: var(--success);
+}
+
+.sphereshare-score-pill.negative {
+  background: #FDF2F4;
+  color: #C03950;
+}
+
+.sphereshare-summary-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 8px 0 14px;
+}
+
+.sphereshare-group-checkout-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--plum), #6A4462);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  margin-top: 14px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.sphereshare-group-checkout-btn:hover:not(:disabled) {
+  background: var(--plum-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(75, 48, 69, 0.2);
+}
+
+.sphereshare-group-checkout-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background: var(--muted);
+  transform: none;
+}
+
+/* Group Checkout Details */
+.sphereshare-order-room-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--blush);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--plum);
+  margin-top: 5px;
+}
+
+.sphereshare-checkout-summary-box {
+  background: var(--blush);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+
+.sphereshare-checkout-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.sphereshare-checkout-row.total-row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 16px;
+}
+
+.sphereshare-price-highlight {
+  color: var(--plum);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.sphereshare-success-meta {
+  background: var(--blush);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 18px 0;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.sphereshare-success-meta p {
+  margin: 4px 0;
+  color: var(--text);
+}
+
+.sphereshare-drawer-loading {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+}
+
+/* Toast Notification */
+.sphereshare-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--plum);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 24px rgba(75, 48, 69, 0.28);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: sphereshareSlideUp 0.3s ease;
+}
+
+@keyframes sphereshareSlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sphereshare-modal {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .sphereshare-title-group h2 {
+    font-size: 20px;
+  }
+
+  .sphereshare-active-banner {
+    padding: 10px 4%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sphereshare-banner-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+}
